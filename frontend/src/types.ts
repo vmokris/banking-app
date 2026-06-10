@@ -37,3 +37,7 @@ export interface FDMsg        extends BaseMsg { kind: 'fd';         state: FDSta
 export interface SuggestionMsg extends BaseMsg { kind: 'suggestion'; text: string; paymentName?: string; amount?: number; }
 
 export type ChatMessage = TextMsg | WidgetMsg | PaymentMsg | FDMsg | SuggestionMsg;
+
+// Distributive Omit — preserves union members (plain Omit<Union, K> only keeps common keys)
+type DistOmit<T, K extends string> = T extends unknown ? Omit<T, K> : never;
+export type ChatMessageInput = DistOmit<ChatMessage, 'id' | 'time'>;

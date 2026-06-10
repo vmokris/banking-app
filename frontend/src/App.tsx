@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import type { ChatMessage, PaymentState, FDState, FlowAction } from './types';
+import type { ChatMessage, ChatMessageInput, PaymentState, FDState, FlowAction } from './types';
 import { parseIntent, genericResponse } from './utils/chatParser';
 import { searchContacts, mockUpcoming, calcMaturity } from './data/mockData';
 import Header from './components/Header';
@@ -24,7 +24,7 @@ export default function App() {
   const [isTyping, setIsTyping] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
-  const addMsg = useCallback((msg: Omit<ChatMessage, 'id' | 'time'>) => {
+  const addMsg = useCallback((msg: ChatMessageInput) => {
     const full = { ...msg, id: uid(), time: new Date() } as ChatMessage;
     setMessages(prev => [...prev, full]);
     return full.id;
