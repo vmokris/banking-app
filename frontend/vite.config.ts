@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: { host: true, port: 5173 },
   build: {
-    outDir: '../backend/static',
+    outDir: 'dist',
     emptyOutDir: true,
   },
 })

@@ -17,7 +17,7 @@ COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY backend/ .
-COPY --from=builder /backend/static ./static
+COPY --from=builder /build/dist ./static
 
 ENV PORT=8080
 EXPOSE 8080

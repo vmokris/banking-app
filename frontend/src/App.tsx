@@ -30,10 +30,6 @@ export default function App() {
     return full.id;
   }, []);
 
-  const updateMsg = useCallback((id: string, updater: (m: ChatMessage) => ChatMessage) => {
-    setMessages(prev => prev.map(m => m.id === id ? updater(m) : m));
-  }, []);
-
   // Initial greeting + proactive suggestion
   useEffect(() => {
     const soonPayment = mockUpcoming.find(p => p.dueInDays <= 3);
